@@ -1,0 +1,6 @@
+www/local/templates/mynamespace/builds
+www/bitrix
+www/upload
+www/local/.config.php
+www/local/vendor/
+www/local/cache/
