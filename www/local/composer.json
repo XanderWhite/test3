@@ -1,0 +1,8 @@
+{
+    "require": {
+        "php": ">=5.4",
+        "techart/bitrix.tao": "1.x.x"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

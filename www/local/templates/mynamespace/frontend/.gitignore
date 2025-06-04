@@ -1,0 +1,7 @@
+.idea
+/node_modules/
+/assets/*
+!/assets/.gitkeep
+*.log
+bundle.html
+*~
