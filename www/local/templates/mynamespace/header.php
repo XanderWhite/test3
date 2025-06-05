@@ -8,3 +8,4 @@
 	<title><?$APPLICATION->ShowTitle()?></title>
 </head>
 <body>
+	<? $APPLICATION->ShowPanel(); ?>

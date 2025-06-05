@@ -6,6 +6,7 @@ export const useDefaultSelect = createUseStyles<string, any>({
 		display: 'flex',
 		flexDirection: 'column',
 		cursor: 'pointer',
+		backgroundColor: 'red',
 
 		'&.disabled': {
 			'pointerEvents': 'none',

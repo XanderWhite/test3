@@ -3,14 +3,13 @@ import Select from 'components/select';
 import Title from 'components/title';
 import useWindowDimensions from 'hooks/useWindowDimensions';
 import React, { useEffect, useState } from 'react';
-import { useDefaultSelect } from 'components/select/styles';
 import ModalController from 'modules/modal/controller';
 import Store from 'modules/modal/lib/Store';
 import { Modal } from 'modules/modal';
 
 
 const Home = () =>  {
-	const { width } = useWindowDimensions();
+	const { width } = useWindowDimensions() as { width: number } ;
 
 	useEffect(()=>{
 		setIsMobile ( width<780)
@@ -18,7 +17,6 @@ const Home = () =>  {
 
 	const[isMobile, setIsMobile] = useState(false);
 
-	console.log(useDefaultSelect().defaultSelect);
 
 	const handleOpenCheckWord = () => {
 		console.log('ytut');
@@ -48,7 +46,7 @@ const Home = () =>  {
 					{ name: 'Опция 2', value: '2' },
 					{ name: 'Опция 3', value: '3' },
  				]}
-  				classes={useDefaultSelect().defaultSelect} //???
+  				classes={''}
   				placeholder='выбери чтонить'
 	  		/>
 
