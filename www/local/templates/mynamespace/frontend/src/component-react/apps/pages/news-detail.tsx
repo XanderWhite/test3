@@ -1,24 +1,45 @@
-// import { useLocation, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNewsStyles } from './news.styles';
+import { NewsItem } from './types';
 
-// const NewsDetail = () => {
-//   const { id } = useParams();
-//   const location = useLocation();
-//   const newsItem = location.state?.newsItem;
+const NewsDetail = ({ id }: { id: string|number }) => {
+  const [newsItem, setNewsItem] = useState<NewsItem | null>(null);
+  const classes = useNewsStyles();
 
-//   // Или загрузить данные по ID:
-//   // useEffect(() => { fetch(`/local/ajax/get_news_detail.php?id=${id}`)... }, [id]);
+  useEffect(() => {
+    const loadNewsDetail = async () => {
+      try {
+        const response = await fetch(`/local/ajax/get_news_detail.php?id=${id}`);
+        const result = await response.json();
+        if (result.success) {
+          setNewsItem(result.data);
+        }
+      } catch (error) {
+        console.error('Error loading news detail:', error);
+      }
+    };
+no
+    loadNewsDetail();
+  }, [id]);
 
-//   return (
-//     <div>
-//       {newsItem ? (
-//         <>
-//           <h1>{newsItem.NAME}</h1>
-//           <img src={newsItem.PREVIEW_PICTURE} alt={newsItem.NAME} />
-//           <div dangerouslySetInnerHTML={{ __html: newsItem.DETAIL_TEXT }} />
-//         </>
-//       ) : (
-//         <p>Новость не найдена</p>
-//       )}
-//     </div>
-//   );
-// };
+  if (!newsItem) return <div className={classes.loading}>Загрузка...</div>;
+
+  return (
+    <div className={'classes.newsDetailContainer'}>
+      <h1 className={'classes.newsDetailTitle'}>{newsItem.NAME}</h1>
+      {newsItem.PREVIEW_PICTURE && (
+        <img
+          src={newsItem.PREVIEW_PICTURE}
+          alt={newsItem.NAME}
+          className={'classes.newsDetailImage'}
+        />
+      )}
+      <div
+        className={'classes.newsDetailText'}
+        dangerouslySetInnerHTML={{ __html: newsItem.DETAIL_TEXT || '' }}
+      />
+    </div>
+  );
+};
+
+export default NewsDetail;

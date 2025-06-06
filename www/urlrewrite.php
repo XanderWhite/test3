@@ -1,6 +1,6 @@
 <?php
 $arUrlRewrite=array (
-  0 =>
+  0 => 
   array (
     'CONDITION' => '#^/news/([0-9]+)/?(\\?.*)?$#',
     'RULE' => 'ELEMENT_ID=$1',

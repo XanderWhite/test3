@@ -1,6 +1,7 @@
 <?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetTitle("Новости");
+\TAO::frontendJs('react');
 ?>
-
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+<div id="app"></div>
+<? require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"); ?>

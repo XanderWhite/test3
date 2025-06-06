@@ -1,6 +1,0 @@
-<?
-$sSectionName = "react";
-$arDirProperties = Array(
-
-);
-?>
