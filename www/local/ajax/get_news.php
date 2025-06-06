@@ -3,6 +3,18 @@ require($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.ph
 
 header('Content-Type: application/json');
 
+if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) ||
+    strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') {
+    die(json_encode(['error' => 'Only AJAX requests allowed']));
+}
+
+$name = 'test3.belov';
+
+$referer = parse_url($_SERVER['HTTP_REFERER'] ?? '', PHP_URL_HOST);
+if ($referer !== $name) {
+    die(json_encode(['error' => 'Invalid request source']));
+}
+
 $iblockId = 5;
 
 $res = CIBlockElement::GetList(

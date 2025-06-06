@@ -3,6 +3,12 @@ require($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.ph
 
 header('Content-Type: application/json');
 
+if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) ||
+    strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) !== 'xmlhttprequest') {
+    die(json_encode(['error' => 'Only AJAX requests allowed']));
+}
+
+
 $newsId = (int)$_GET['id'];
 if (!$newsId) {
     echo json_encode([

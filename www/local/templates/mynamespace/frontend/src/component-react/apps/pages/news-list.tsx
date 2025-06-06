@@ -9,7 +9,12 @@ const NewsList = () => {
   useEffect(() => {
     const loadNews = async () => {
       try {
-        const response = await fetch('/local/ajax/get_news.php');
+        const response = await fetch('/local/ajax/get_news.php',{
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+
         const result = await response.json();
         if (result.success) {
           setNews(result.data);
@@ -30,7 +35,6 @@ const NewsList = () => {
             href={item.DETAIL_PAGE_URL}
             className={classes.linkItem}
           >
-            
             <img
               src={item.PREVIEW_PICTURE}
               alt={item.NAME}

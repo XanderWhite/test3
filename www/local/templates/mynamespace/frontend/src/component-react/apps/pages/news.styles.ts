@@ -58,3 +58,48 @@ export const useNewsStyles = createUseStyles({
     textDecoration: 'none',
   }
 });
+
+
+
+export const useNewsDetailStyles = createUseStyles({
+  newsDetailContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '20px',
+    padding: '20px',
+    maxWidth: '1200px',
+    margin: '0 auto',
+  },
+  newsDetailTitle: {
+    margin: '0 0 10px 0',
+    fontSize: '1.2rem',
+    color: '#333',
+  },
+  newsDetailText: {
+    color: '#666',
+    maxWidth: '600px',
+    fontSize: '0.9rem',
+    lineHeight: '1.5',
+  },
+  newsDetailImage: {
+    maxWidth: '400px',
+    width: '100%',
+    objectFit: 'contain'
+  },
+  newsDetailLink:{
+    fontSize: '20px',
+    backgroundColor: 'black',
+    padding: '10px 20px',
+    borderRadius: '30px',
+    textDecoration:'none',
+    color: '#fff',
+    transition: '0.3s',
+    '&:hover': {
+        scale: '1.1',
+       boxShadow: '0 10px 20px rgba(0,0,0,0.1)',
+      transform: 'translateY(-5px)',
+
+    }
+  }
+});

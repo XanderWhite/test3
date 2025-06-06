@@ -1,8 +1,9 @@
 import React from 'react'
 
 import { createRoot } from 'react-dom/client';
-import News from 'apps/pages/news';
-import Home from 'apps/pages/home';
+import NewsDetail from 'apps/pages/news-detail';
+import NewsList from 'apps/pages/news-list';
+import { Route, BrowserRouter, Routes } from 'react-router-dom';
 
 // const App: React.FC = () => {
 // 	return (
@@ -17,26 +18,16 @@ const App = () => {
     const container = document.getElementById('app');
     if (container) {
       const root = createRoot(container);
-      root.render(<News />);
+      root.render(
+      <BrowserRouter>
+        <Routes>
+          <Route path='/news' element = {<NewsList/>}/>
+          <Route path='/news/:id' element = {<NewsDetail/>}/>
+        </Routes>
+      </BrowserRouter>
+      );
     }
   });
 }
 
 export { App }
-
-// const App = () => {
-//   document.addEventListener('DOMContentLoaded', () => {
-//     const container = document.getElementById('app');
-//     if (container) {
-//       const root = createRoot(container);
-//       root.render(
-//        <Router>
-//       <Routes>
-//         <Route path="/news" element={<News />} />
-//       </Routes>
-//     </Router>);
-//     }
-//   });
-// }
-
-// export { App }
