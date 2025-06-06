@@ -17,9 +17,31 @@ if ($referer !== $name) {
 
 $iblockId = 5;
 
+$filterText = trim($_GET['filter'] ?? '');
+
+$filter = [
+    'IBLOCK_ID' => $iblockId,
+    'ACTIVE' => 'Y'
+];
+
+if ($filterText !== '') {
+    $filter[] = [
+        'LOGIC' => 'OR',
+        [
+            '%NAME' => $filterText
+        ],
+        [
+            '%PREVIEW_TEXT' => $filterText
+        ],
+        [
+            '%DETAIL_TEXT' => $filterText
+        ]
+    ];
+}
+
 $res = CIBlockElement::GetList(
     ['DATE_ACTIVE_FROM' => 'DESC'],
-    ['IBLOCK_ID' => $iblockId, 'ACTIVE' => 'Y'],
+    $filter,
     false,
     false,
     ['ID', 'NAME', 'PREVIEW_TEXT', 'DETAIL_TEXT', 'DATE_ACTIVE_FROM', 'PREVIEW_PICTURE', 'DETAIL_PAGE_URL']
